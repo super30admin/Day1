@@ -4,8 +4,10 @@
 
 // Your code here along with comments explaining your approach
 
+import java.util.LinkedList;
+
 /**
- * Using seperate chaining method for addition, removal, lookup of elements in a HashSet
+ * Using separate chaining method for addition, removal, lookup of elements in a HashSet
  *
  * Time Complexity: O(1) (add, hash), O(n) (remove, contains)
  * Space Complexity: O(n)
