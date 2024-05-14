@@ -1,6 +1,6 @@
 /*
     TC - O(1)
-    SC - O(1)
+    SC - O(n)
     Approach - I used the inbuilt stack class provided by java to implement the push, pop, top and getMin
 */
 
