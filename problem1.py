@@ -11,7 +11,7 @@ class MyHashSet:
   def __init__(self):
     self.numberOfBuckets = 1000
     self.bucketItems = 1000
-    self.buckets = [None] * self.numberOfBuckets
+    self.storage = [None] * self.numberOfBuckets
 
   def getBucket(self, key):
     return key % self.numberOfBuckets
@@ -22,25 +22,25 @@ class MyHashSet:
   def add(self, key) -> None:
     bucket = self.getBucket(key)
     bucketItem = self.getBucketItem(key)
-    if self.buckets[bucket] == None:
+    if self.storage[bucket] == None:
       if bucket == 0:
-        self.buckets[bucket] = [False] * (self.bucketItems + 1)
+        self.storage[bucket] = [False] * (self.bucketItems + 1)
       else:
-        self.buckets[bucket] = [False] * self.bucketItems
-    self.buckets[bucket][bucketItem] = True
+        self.storage[bucket] = [False] * self.bucketItems
+    self.storage[bucket][bucketItem] = True
 
   def remove(self, key) -> None:
     bucket = self.getBucket(key)
-    if self.buckets[bucket] != None:
+    if self.storage[bucket] != None:
       bucketItem = self.getBucketItem(key)
-      self.buckets[bucket][bucketItem] = False
+      self.storage[bucket][bucketItem] = False
 
   def contains(self, key) -> bool:
     bucket = self.getBucket(key)
-    if self.buckets[bucket] == None:
+    if self.storage[bucket] == None:
       return False
     bucketItem = self.getBucketItem(key)
-    return self.buckets[bucket][bucketItem]
+    return self.storage[bucket][bucketItem]
 
 
 # Your MyHashSet object will be instantiated and called as such:
