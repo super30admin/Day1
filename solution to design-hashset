@@ -1,0 +1,56 @@
+// Time Complexity : worst case is O(n)
+// Space Complexity : o(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// using 2d arrays and 2 distinct hash functions so that there is no collision and we initialize arrays only when we need them.
+// an edge case is also added for the value 10^6 so that it is also stored
+
+class MyHashSet {
+    int buckets, bucketItems;
+    boolean[][] hs;
+
+    public MyHashSet() {
+        this.buckets = 1000;
+        this.bucketItems = 1000;
+        hs = new boolean[buckets][];
+    }
+
+    int getBucketForKey(int key) {
+        return key % buckets;
+    }
+
+    int getBucketItemForKey(int key) {
+        return key / bucketItems;
+    }
+    
+    public void add(int key) {
+        int bucketNo = getBucketForKey(key);
+        int bucketItemNo = getBucketItemForKey(key);
+        if(hs[bucketNo] == null && bucketNo == 0) {
+            hs[bucketNo] = new boolean[bucketItems + 1];
+        } else if(hs[bucketNo] == null) {
+            hs[bucketNo] = new boolean[bucketItems];
+        }
+        hs[bucketNo][bucketItemNo] = true;
+    }
+    
+    public void remove(int key) {
+        int bucketNo = getBucketForKey(key);
+        int bucketItemNo = getBucketItemForKey(key);
+        if(hs[bucketNo] == null) {
+            return;
+        }
+        hs[bucketNo][bucketItemNo] = false;
+    }
+    
+    public boolean contains(int key) {
+        int bucketNo = getBucketForKey(key);
+        int bucketItemNo = getBucketItemForKey(key);
+        if(hs[bucketNo] == null) {
+            return false;
+        }
+        return hs[bucketNo][bucketItemNo];
+    }
+}
