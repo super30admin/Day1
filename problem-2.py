@@ -34,7 +34,16 @@ class MinStack:
             self.min = self.stack.pop()
 
     def top(self) -> int:
+        if len(self.stack) == 0:
+            return
         return self.stack[-1]
 
     def getMin(self) -> int:
         return self.min
+
+
+obj = MinStack()
+obj.push(3)
+obj.pop()
+param_3 = obj.top()
+param_4 = obj.getMin()
