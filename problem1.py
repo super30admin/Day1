@@ -4,21 +4,33 @@ add: O(1)
 remove: O(1)
 contains: O(1)
 
+Space complexity: O(1) Since we need a constant amount of space i.e. 1000 * 1000 array at most
+
+Did this code successfully run on Leetcode: Yes 
+Any problem you faced while coding this : No
+
 '''
 
 class MyHashSet:
 
+  # initialize primary array of length 1000 with all None
   def __init__(self):
     self.numberOfBuckets = 1000
     self.bucketItems = 1000
     self.storage = [None] * self.numberOfBuckets
 
+  # first hash function
   def getBucket(self, key):
     return key % self.numberOfBuckets
 
+  # second hash function
   def getBucketItem(self, key):
     return key // self.numberOfBuckets
 
+  # compute bucket index and item index using respective hash functions
+  # if bucket is None, initialize the bucket with array of size 1000 initialized with False
+  # mark the item index in secondary array to True
+  # handle special case for 0th bucket
   def add(self, key) -> None:
     bucket = self.getBucket(key)
     bucketItem = self.getBucketItem(key)
@@ -29,12 +41,18 @@ class MyHashSet:
         self.storage[bucket] = [False] * self.bucketItems
     self.storage[bucket][bucketItem] = True
 
+  # compute bucket index and item index using respective hash functions
+  # if bucket is None, do nothing
+  # else, mark the value at item index in the secondary array to False
   def remove(self, key) -> None:
     bucket = self.getBucket(key)
     if self.storage[bucket] != None:
       bucketItem = self.getBucketItem(key)
       self.storage[bucket][bucketItem] = False
 
+  # compute bucket index and item index using respective hash functions
+  # if bucket is None, return False
+  # else, return the boolean value at the item index in the secondary array
   def contains(self, key) -> bool:
     bucket = self.getBucket(key)
     if self.storage[bucket] == None:
