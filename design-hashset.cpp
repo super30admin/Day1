@@ -3,10 +3,10 @@
  *
  * Problem 1:(https://leetcode.com/problems/design-hashset/)
  *
- * Time Complexity  : 
- * Space Complexity :
- * Did this code successfully run on Leetcode :
- * Any problem you faced while coding this :
+ * Time Complexity  : Average case : O(1) : Worst case : O(n), where n is the key
+ * Space Complexity : O(n)
+ * Did this code successfully run on Leetcode : Yes
+ * Any problem you faced while coding this : -
  * Your code here along with comments explaining your approach :
  *      Brute force approach : Using Vectors
  *          - Creating a vector of size 10e6 with all zeroes, and adding 1 at the index value 
