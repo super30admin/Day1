@@ -1,10 +1,10 @@
 /*
 Time Complexity :
-add : O(1)
-remove : O(1)
-contains : O(1)
-Space Complexity : 
-worst case - O(buckets * bucketItems)
+push : O(1)
+pop : O(1)
+top : O(1)
+getmin : O(1)
+Space Complexity : O(n)
 Did this code successfully run on Leetcode : yes
 */ 
 
