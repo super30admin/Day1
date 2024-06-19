@@ -30,5 +30,4 @@ class MyHashSet:
         bucketitem = self.getbucketitems(key)
         if self.storage[bucket] == None:
             return False
-        
         return self.storage[bucket][bucketitem]
