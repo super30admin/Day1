@@ -1,9 +1,7 @@
 // Time Complexity : O(1)
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode :yes
-// Any problem you faced while coding this : I faced an arrayindex out of bounds exception initially. Later this is corrected to 
-
-
+// Any problem you faced while coding this : I faced an arrayindex out of bounds exception initially. Later this is corrected.
 
 //Approach to solve this problem is to identify a position uniquely, Every element in input should have exactly one location corresponding to it.
 //Initialize array to handle 1 million entries initially. Modulo & Division operations can be used interchangebly, 
@@ -22,12 +20,12 @@ class MyHashSet {
 
     private int getPrimaryHashFunction(int key){
 //return reminder using modulo operation
-        return mainEntries%key;
+        return key%mainEntries;
     }
 
     private int getSecondaryHashFunction(int key){
 //return quotient using modulo operation
-        return subEntries/key;
+        return key/subEntries;
     }
 //adding value to hashset
     public void add(int key) {
@@ -49,8 +47,7 @@ class MyHashSet {
 	
  //Set the element in hashset to false when the value is removed 
     public void remove(int key) {
-        int primaryValue=getPr
-		imaryHashFunction(key);        
+        int primaryValue=getPrimaryHashFunction(key);        
         if(hashset[primaryValue]==null){
             hashset[primaryValue]=new boolean[subEntries];
         }        
