@@ -9,6 +9,59 @@
 
 //HashSet
 class MyHashSet {
+    private boolean[][] arr;
+    private int firstArrInd;  // Size of the first dimension
+    private int secdArrInd;   // Size of the second dimension
+
+    public MyHashSet() {
+        this.firstArrInd = 1000;  // Example size for first dimension
+        this.secdArrInd = 1000;   // Example size for second dimension
+        this.arr = new boolean[firstArrInd][];  // Initialize with first dimension size
+    }
+
+    private int hash1(int key) {
+        return key % firstArrInd;
+    }
+
+    private int hash2(int key) {
+        return key / secdArrInd;
+    }
+
+    public void add(int key) {
+        int bucket = hash1(key);
+        int bucketItem = hash2(key);
+
+        if (arr[bucket] == null) {
+            arr[bucket] = new boolean[bucket == 0 ? secdArrInd + 1 : secdArrInd];
+        }
+
+        arr[bucket][bucketItem] = true;
+    }
+
+    public void remove(int key) {
+        int bucket = hash1(key);
+        int bucketItem = hash2(key);
+
+        if (arr[bucket] == null) return;
+
+        arr[bucket][bucketItem] = false;
+    }
+
+    public boolean contains(int key) {
+        int bucket = hash1(key);
+        int bucketItem = hash2(key);
+
+        if (arr[bucket] == null) {
+            return false;
+        }
+
+        return arr[bucket][bucketItem];
+    }
+}
+
+
+
+class MyHashSet {
     boolean arr[];
 
     public MyHashSet() {
