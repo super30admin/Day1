@@ -14,21 +14,30 @@ class MyHashSet:
     def add(self, key: int) -> None:
         bucket = self.getbucket(key)
         bucketitem = self.getbucketitems(key)
-        if bucket == 0:
-            self.storage[bucket] = [None]*(self.bucketitems+1)
-        self.storage[bucket] = [None]*self.bucketitems
-
+        if self.storage[bucket] is None:
+            if bucket == 0:
+                self.storage[bucket] = [None]*(self.bucketitems+1)
+            else:
+                self.storage[bucket] = [None]*self.bucketitems
         self.storage[bucket][bucketitem] = True
 
     def remove(self, key: int) -> None:
         bucket = self.getbucket(key)
         bucketitem = self.getbucketitems(key)
-        self.storage[bucket][bucketitem] = None
+        if self.storage[bucket] is not None:
+            self.storage[bucket][bucketitem] = None
+        return
 
     def contains(self, key: int) -> bool:
         bucket = self.getbucket(key)
         bucketitem = self.getbucketitems(key)
-        if self.storage[bucket] == None:
+        if self.storage[bucket] is None:
             return False
-        
-        return self.storage[bucket][bucketitem]
+        return self.storage[bucket][bucketitem] is True
+
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
