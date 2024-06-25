@@ -90,6 +90,61 @@ public:
     }
 };
 
+
+
+
+/**
+ * Approach 2 : Using double pointer
+*/
+
+
+class MyHashSet {
+    int size = 1000;
+    bool** hSet;
+public:
+    MyHashSet() {
+        hSet = new bool*[1000];
+        for(int i = 0; i<1000; i++){
+            hSet[i] = nullptr;
+        }
+    }
+    
+    int hash1(int key) {
+        return key%size;
+    }
+
+    int hash2(int key){
+        return key/size;
+    }
+
+    void add(int key) {
+        int idx1 = hash1(key);
+        if(hSet[idx1] == nullptr){
+            hSet[idx1] = new bool[1001];
+            for(int i = 0; i<1001; i++){
+                hSet[idx1][i] = false;
+            }
+        }
+        int idx2 = hash2(key);
+        hSet[idx1][idx2] = true;
+    }
+    
+    void remove(int key) {
+        int idx1 = hash1(key);
+        if(hSet[idx1] == nullptr) return; 
+        int idx2 = hash2(key);
+        hSet[idx1][idx2] = false;
+    }
+    
+    bool contains(int key) {
+        int idx1 = hash1(key);
+        int idx2 = hash2(key);
+        if(hSet[idx1] == nullptr) return false;
+        if(hSet[idx1][idx2] == false) return false;
+        return true;
+    }
+};
+
 /**
  * Your MyHashSet object will be instantiated and called as such:
  * MyHashSet* obj = new MyHashSet();
