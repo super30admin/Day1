@@ -1,3 +1,8 @@
+# Time Complexity : O(1)
+# Space Complexity : O(n)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
+
 class MinStack:
 
     #time comp = O(1) , space comp = O(n)
@@ -41,7 +46,7 @@ class MinStack:
 #--------------Another way using only 1 stack-----------------
 class MinStack:
 
-    #all operations time comp = O(1) , space comp = O(n) but could be less that first approach
+    #all operations time comp = O(1) , space comp = O(n) but space used could be less that first approach
     def __init__(self):
         self.stack = []
         self.Min = int(sys.maxsize)
