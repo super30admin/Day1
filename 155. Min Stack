@@ -1,0 +1,34 @@
+# To create a minstack which supports o(1) operations [push, pop, top, getMin], I chose the existing data structure from python class ie Array
+# Python array inherently supports o(1) operations on push, pop and top
+# To design O(1) operation for getMin, I create a separate stack which just tracks the minimum value pushed into our main stack so far. I can just retrieve the last value of this array ie is the minimum value.
+
+class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        self.minStack = []
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+
+        val = min(val , self.minStack[-1] if self.minStack else val)
+        self.minStack.append(val)
+        
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.minStack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.minStack[-1]
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
