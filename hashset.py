@@ -4,16 +4,16 @@ has been added. In remove we are removing an element from the same key or index.
 class MyHashSet:
 
     def __init__(self):
-        self.data = [False]*10
+        self.data = [0]*10
         
 
     def add(self, key: int) -> None:
-        self.data[key]=True
+        self.data[key]=1
         return self.data
         
 
     def remove(self, key: int) -> None:
-        self.data[key]=False
+        self.data[key]=2
         return self.data
 
     def contains(self, key: int) -> bool:
