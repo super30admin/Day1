@@ -1,0 +1,53 @@
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
+# Time Complexity : O(1)
+# Space Complexity : O(n)
+
+class MinStack(object):
+    
+    def __init__(self):
+        # Initialize two stacks: one for all elements and one for minimum elements
+        self.stack = []
+        self.min_stack = []
+
+    def push(self, val):
+        """
+        :type val: int
+        :rtype: None
+        """
+        # Push the value onto the main stack
+        self.stack.append(val)
+        # If the min stack is empty or the value is smaller than or equal to the top of the min stack, push it onto the min stack
+        if not self.min_stack or val <= self.min_stack[-1]:
+            self.min_stack.append(val)
+
+    def pop(self):
+        """
+        :rtype: None
+        """
+        # Pop the value from the main stack
+        val = self.stack.pop()
+        # If the popped value is the same as the top of the min stack, pop it from the min stack as well
+        if val == self.min_stack[-1]:
+            self.min_stack.pop()
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        # Return the top value of the main stack
+        return self.stack[-1]
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        # Return the top value of the min stack, which is the minimum element
+        return self.min_stack[-1]
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
