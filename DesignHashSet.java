@@ -10,8 +10,8 @@ public class DesignHashSet {
     private int primaryBucket;
     private int nestedBuckets;
     public DesignHashSet() {
-        this.primaryBucket=1000;
-        this.nestedBuckets=1000;
+        this.primaryBucket=25;
+        this.nestedBuckets=25;
         this.storage = new boolean[primaryBucket][];
     }
 
@@ -66,7 +66,7 @@ public class DesignHashSet {
         designHashSet.contains(0);
         designHashSet.remove(25);
         designHashSet.contains(25);
-        System.out.println("HashSet contains " + designHashSet.contains(25));
+        System.out.println("HashSet contains 25: " + designHashSet.contains(25));
     }
 
 }
