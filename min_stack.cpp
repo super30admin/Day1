@@ -6,6 +6,8 @@
 
 class MinStack {
 public:
+    // first value of pair is the value being pushed 
+    // second value of pair is the min value till now in the stack
     using stack_entry_pair = std::pair<int, int> ;
 
     MinStack() {
