@@ -5,67 +5,44 @@
 
 
 // Your code here along with comments explaining your approach
-class MyHashSet {
-    private boolean [][] storage;
-    private int buckets;
-    private int bucketItems;
+class MinStack {
+    private Stack<Integer> st;
+    private Stack<Integer> minst;
+    private int min;
 
-    public MyHashSet() 
+    public MinStack() 
     {
-        this.buckets = 1000;
-        this.bucketItems = 1000;
-        this.storage = new boolean[buckets][];
-    }
-
-    private int bucket(int key)
-    {
-        return key%buckets;
-    }
-
-    private int bucketItem(int key)
-    {
-        return key/bucketItems;
+       this.st = new Stack();
+       this.minst = new Stack();
+       this.min = Integer.MAX_VALUE; 
     }
     
-    public void add(int key) 
+    public void push(int val) 
     {
-        int bucket = bucket(key);
-        int bucketItem = bucketItem(key);
-
-        if(storage[bucket] == null)
+        if(min >= val)
         {
-            if(bucket==0)
-            {
-                storage[bucket] = new boolean[bucketItems + 1];
-            }
-            else
-            {
-                storage[bucket] = new boolean[bucketItems];
-            }
+            minst.push(min);
+            min = val;
+
         }
-        storage[bucket][bucketItem] = true;
+        st.push(val);
     }
     
-    public void remove(int key) 
+    public void pop() 
     {
-        int bucket = bucket(key);
-        if(storage[bucket] == null)
+        if(min == st.pop())
         {
-            return;
+            min = minst.pop();
         }
-        int bucketItem = bucketItem(key);
-        storage[bucket][bucketItem] = false;
     }
     
-    public boolean contains(int key) 
+    public int top() 
     {
-        int bucket = bucket(key);
-        if(storage[bucket] == null)
-        {
-            return false;
-        }
-        int bucketItem = bucketItem(key);
-        return storage[bucket][bucketItem];
-
+        return st.peek();
+    }
+    
+    public int getMin() 
+    {
+        return min;  
     }
 }
