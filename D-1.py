@@ -44,8 +44,8 @@ class MyHashSet:
 
 ## Problem 2: Design MinStack (https://leetcode.com/problems/min-stack/)
 
+#Using one Stack
 class MinStack:
-#Using one Stack 
     def __init__(self):
         self.stack = []
         self.Min = int(sys.maxsize)
@@ -70,27 +70,28 @@ class MinStack:
 #TC: Push = O(1), Pop = O(1), Push = O(1),top = O(1), getmin = O(1)
 
 #Using two Stacks
-#     def __init__(self):
-#         self.stack = []
-#         self.MinStack = []
-#         self.Min = int(sys.maxsize) # assigning infinite integer value
-#         self.MinStack.append(self.Min)
+class MinStack:
+    def __init__(self):
+        self.stack = []
+        self.MinStack = []
+        self.Min = int(sys.maxsize) # assigning infinite integer value
+        self.MinStack.append(self.Min)
 
-#     def push(self, val: int) -> None:
-#         if val <= self.Min:
-#             self.Min = val
-#         self.stack.append(val)
-#         self.MinStack.append(self.Min)                
+    def push(self, val: int) -> None:
+        if val <= self.Min:
+            self.Min = val
+        self.stack.append(val)
+        self.MinStack.append(self.Min)                
 
-#     def pop(self) -> None:
-#         self.stack.pop()
-#         self.MinStack.pop()  
-#         self.Min = self.MinStack[-1]      
+    def pop(self) -> None:
+        self.stack.pop()
+        self.MinStack.pop()  
+        self.Min = self.MinStack[-1]      
 
-#     def top(self) -> int:
-#         return self.stack[-1]        
+    def top(self) -> int:
+        return self.stack[-1]        
 
-#     def getMin(self) -> int:
-#         return self.Min
+    def getMin(self) -> int:
+        return self.Min
         
 # #TC: Push = O(1), Pop = O(1), Push = O(1),top = O(1), getmin = O(1)
