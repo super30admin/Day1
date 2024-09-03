@@ -1,4 +1,4 @@
-#TC:O(1) SC:0(N)
+#TC:O(1) SC:0(1)
 
 class MyHashSet:
 
