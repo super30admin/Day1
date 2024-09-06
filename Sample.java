@@ -57,3 +57,70 @@ class MyHashSet {
  * obj.remove(key);
  * boolean param_3 = obj.contains(key);
  */
+ 
+ 
+ 
+ 
+class MinStack {
+    Stack<Integer> st = new Stack<>();
+    int min;
+
+    public MinStack() {
+        min = -1;
+    }
+    
+    public void push(int val) {
+        if (st.isEmpty()){
+            st.push(val);
+            min = val;
+        }
+
+        if (val >= min){
+            st.push(val);
+        }
+
+        if (val < min){
+            st.push(2*val - min);
+            min = val;
+        }
+    }
+    
+    public void pop() {
+        if (st.isEmpty())
+            return;
+        
+        if (st.peek() < min){
+            min = 2 * min - st.peek();
+            st.pop();
+        }
+        else
+        {
+            st.pop();
+        }
+    }
+    
+    public int top() 
+    {
+        if(st.isEmpty())   
+            return -1;
+        
+        int q=st.peek();
+        if(q >= min )
+         return q;
+        if(q < min )
+         return min;
+
+        return 0;
+    }
+    
+    public int getMin() {
+         if(st.isEmpty())
+         {
+            return -1;
+         }
+         return min;
+    }
+}
+
+
+
