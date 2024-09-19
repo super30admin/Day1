@@ -6,17 +6,14 @@ class MyHashSet(object):
         # creates a 2D array of size 1000
         self.storage = [[False] for _ in range(self.primary_buckets)]
 
-    def get_primary_hash(self, key):  # Add 'self' as the first parameter
+    def get_primary_hash(self, key):
         return key % self.primary_buckets
 
-    def get_secondary_hash(self, key):  # Add 'self' as the first parameter
+    def get_secondary_hash(self, key):
         return key // self.secondary_buckets
 
     def add(self, key):
-        """
-        :type key: int
-        :rtype: None
-        """
+
         # O(1) is the best time complexity and O(n) is the worst time complexity
         primary_index = self.get_primary_hash(key)
         if len(self.storage[primary_index]) == 1:
@@ -28,10 +25,7 @@ class MyHashSet(object):
         self.storage[primary_index][secondary_index] = True
 
     def remove(self, key):
-        """
-        :type key: int
-        :rtype: None
-        """
+
         # O(1) is the best time complexity and O(1) is the worst time complexity
         primary_index = self.get_primary_hash(key)
         # If value of primary bucket at the above primary_index is empty, return
@@ -41,10 +35,7 @@ class MyHashSet(object):
         self.storage[primary_index][secondary_index] = False
 
     def contains(self, key):
-        """
-        :type key: int
-        :rtype: bool
-        """
+
         # O(1) is the best time complexity and O(1) is the worst time complexity
         primary_index = self.get_primary_hash(key)
         # If value of primary bucket at the above primary_index is empty, return False
