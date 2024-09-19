@@ -1,7 +1,7 @@
-# Time Complexity : 
-# Space Complexity :
-# Did this code successfully run on Leetcode :
-# Any problem you faced while coding this :
+# Time Complexity : O(1)
+# Space Complexity : O(n)
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : no
 
 
 # Your code here along with comments explaining your approach
@@ -24,3 +24,37 @@ class MyHashSet:
     def contains(self, key: int) -> bool:
         # Return the value at the index corresponding to key
         return self.set[key]
+    
+
+# Time Complexity : o(1)
+# Space Complexity : o(n)
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : no
+
+class MyHashSet:
+    def __init__(self):
+        # Create a list of buckets, each bucket is a list (initially empty)
+        self.bucket_size = 1000
+        self.buckets = [[] for _ in range(self.bucket_size)]
+
+    def hash(self, key: int) -> int:
+        # Hash function to determine which bucket a key goes to
+        return key % self.bucket_size   
+
+    def add(self, key: int) -> None:
+        # Find the appropriate bucket for the key
+        bucket = self.buckets[self.hash(key)]
+        if key not in bucket:
+            bucket.append(key)
+
+    def remove(self, key: int) -> None:
+        # Find the appropriate bucket for the key
+        bucket = self.buckets[self.hash(key)]
+        # Remove the key if it exists in the bucket
+        if key in bucket:
+            bucket.remove(key)
+
+    def contains(self, key: int) -> bool:
+        # Find the appropriate bucket for the key and check for existence
+        bucket = self.buckets[self.hash(key)]
+        return key in bucket
