@@ -1,3 +1,6 @@
+# Time Complexity: O(1) average case, O(n) worst case for all operations
+# Space Complexity: O(m + n), where m is the number of buckets and n is the number of unique elements
+
 class ListNode:
     def __init__(self, key):
         self.key = key
