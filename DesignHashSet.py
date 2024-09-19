@@ -70,7 +70,6 @@ class MyHashSet:
         return False
     
 
-
 # Your MyHashSet object will be instantiated and called as such:
 # obj = MyHashSet()
 # obj.add(key)
