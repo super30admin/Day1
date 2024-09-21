@@ -1,7 +1,7 @@
-// Time Complexity : O(1) - Amortized time complexity
-// Space Complexity : 
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(1) - Amortized time complexity (Worst case is O(N) but the worst case is rare here, on average it will be O(1)
+// Space Complexity : O(N) space complexity where N is the number of elements 
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Getting used to Java Syntax (coming from Python)
 
 
 // Your code here along with comments explaining your approach
