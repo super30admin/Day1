@@ -1,3 +1,10 @@
+# Solution:
+
+# 1. Define two stacks one for reguler push and pop and another for tracking minimum
+# 2. While pushing into minStack compare the previous minimum and upcoming value and push the minimum of them in MinStack.
+# 3. Top of the MinStack will always give minimum value till the elements
+
+
 class MinStack(object):
 
     def __init__(self):
