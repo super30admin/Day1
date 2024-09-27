@@ -1,0 +1,25 @@
+// Time Complexity : O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : The solution is almost same as discussed in the class.
+
+
+class MyHashSet:
+
+    def __init__(self):
+        self.buckets = [[]] * 1000
+
+    def add(self, key):
+        bucketIndex = key % 1000
+        if key not in self.buckets[bucketIndex]:
+            self.buckets[bucketIndex].append(key)
+        
+
+    def remove(self, key):
+        bucketIndex = key%1000
+        if key in self.buckets[bucketIndex]:
+            self.buckets[bucketIndex].remove(key)
+
+    def contains(self, key):
+        bucketIndex = key % 1000
+        return key in self.buckets[bucketIndex] 
