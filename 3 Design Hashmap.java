@@ -2,65 +2,83 @@
 // Space Complexity : O(n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
-
-
-class MyHashSet {
-    int primarybucket;
-    int secondarybucket;
-    boolean[][] storage;
+class MyHashMap {
+    private int buckets;
+    private Node[] storage;
     
-    public MyHashSet() {
-        this.primarybucket = 1000;
-        this.secondarybucket = 1000;
-        this.storage = new boolean[primarybucket][];
-    }
-
-    private int getprimarybucket(int key)
-    {
-        return key % primarybucket;
-    }
-    private int getsecondarybucket(int key)
-    {
-        return key / secondarybucket;
-    }
-    
-    public void add(int key) {
-        int primaryHash = getprimarybucket(key);
-        if(storage[primaryHash]==null)
-        {
-            if(primaryHash == 0)
-            {
-                storage[primaryHash] = new boolean[secondarybucket+1];
-            }
-            else
-            {              
-                  storage[primaryHash] = new boolean[secondarybucket];
-            }
-
+    class Node {
+        int key;
+        int value;
+        Node next;
+        
+        public Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+            this.next = null;
         }
-        int secondaryHash = getsecondarybucket(key);
-        storage[primaryHash][secondaryHash] = true;
+    }
+    
+    public MyHashMap() {
+        this.buckets = 1000;
+        this.storage = new Node[buckets];
+    }
+    
+    private int getHash(int key) {
+        return key % buckets;
+    }
+    
+    private Node getPrev(Node head, int key) {
+        Node prev = head;
+        Node curr = head.next;
+        
+        while (curr != null && curr.key != key) {
+            prev = curr;
+            curr = curr.next;
+        }
+        return prev;
+    }
+    
+    public void put(int key, int value) {
+        int hash = getHash(key);
+        
+        if (storage[hash] == null) {
+            storage[hash] = new Node(-1, -1); // dummy head
+        }
+        
+        Node prev = getPrev(storage[hash], key);
+        if (prev.next == null) {
+            prev.next = new Node(key, value);
+        } else {
+            prev.next.value = value;
+        }
+    }
+    
+    public int get(int key) {
+        int hash = getHash(key);
+        
+        if (storage[hash] == null) {
+            return -1;
+        }
+        
+        Node prev = getPrev(storage[hash], key);
+        if (prev.next == null) {
+            return -1;
+        }
+        return prev.next.value;
     }
     
     public void remove(int key) {
-        int primaryHash = getprimarybucket(key);
-        if(storage[primaryHash]==null) return;
-         int secondaryhash = getsecondarybucket(key);
-        storage[primaryHash][secondaryhash] = false;
-    }
-    
-    public boolean contains(int key) {
-        int primaryHash = getprimarybucket(key);
-        if(storage[primaryHash]==null) return false;
-        int secondaryhash = getsecondarybucket(key);
-        return storage[primaryHash][secondaryhash];
+        int hash = getHash(key);
+        
+        if (storage[hash] == null) {
+            return;
+        }
+        
+        Node prev = getPrev(storage[hash], key);
+        if (prev.next == null) {
+            return;
+        }
+        
+        prev.next = prev.next.next;
     }
 }
-
-/**
- * Your MyHashSet object will be instantiated and called as such:
- * MyHashSet obj = new MyHashSet();
- * obj.add(key);
- * obj.remove(key);
- * boolean param_3 = obj.contains(key);
- */
