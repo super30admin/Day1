@@ -5,7 +5,7 @@
 # // Time Complexity :  o(1) for all functions
 # // Space Complexity : O(n) for both stacks in worst case
 # // Did this code successfully run on Leetcode : Yes
-# // Any problem you faced while coding this : Failed single stack approach multiple times
+# // Any problem you faced while coding this : Failed single stack approach 
 
 
 # // Your code here along with comments explaining your approach
@@ -45,7 +45,7 @@ obj = MinStack()
 obj.push(-2)
 obj.push(0)
 obj.push(-3)
-obj.getMin() #// return -3
+print(obj.getMin()) #// return -3
 obj.pop()
-obj.top()   #// return 0
-obj.getMin() #// return -2
+print(obj.top())   #// return 0
+print(obj.getMin()) #// return -2
