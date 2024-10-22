@@ -1,4 +1,4 @@
-# Time Complexity : add - O(n), remove - O(n), contains - O(n)
+# Time Complexity : add - O(1), remove - O(1), contains - O(1)
 # Space Complexity : Worst Case - O(n) (if the there is at least one element in every bucket of the PDS
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : None
