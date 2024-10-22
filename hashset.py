@@ -1,11 +1,11 @@
-// Time Complexity : add - O(n), remove - O(n), contains - O(n)
-// Space Complexity : Worst Case - O(n) (if the there is at least one element in every bucket of the PDS
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : None
+# Time Complexity : add - O(n), remove - O(n), contains - O(n)
+# Space Complexity : Worst Case - O(n) (if the there is at least one element in every bucket of the PDS
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : None
 
 
-// Your code here along with comments explaining your approach
-// Implementing hashsets using double hashing technique
+# Your code here along with comments explaining your approach
+# Implementing hashsets using double hashing technique
 
 class MyHashSet:
 
