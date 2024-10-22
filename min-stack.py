@@ -3,7 +3,7 @@
 # similarly we will pop the value from normal stack and if the value is equal to the min value we will pop it from minStack.
 
 # // Time Complexity :  o(1) for all functions
-# // Space Complexity : O(n) for both stacks in worst case
+# // Space Complexity : O(n) for both stacks in worst case, wouldve been O(1) for 1 stack
 # // Did this code successfully run on Leetcode : Yes
 # // Any problem you faced while coding this : Failed single stack approach 
 
@@ -12,30 +12,30 @@
 
 class MinStack:
 
-    def __init__(self): # 2 stack appraoch
+    def __init__(self):                                                     # 2 stack appraoch
         self.stack = []
         self.minStack = [float('inf')]
 
     def push(self, val: int) -> None:
-        self.stack.append(val)
-        self.minStack.append(min(self.minStack[-1], val))
+        self.stack.append(val)                                              # normal stack                      
+        self.minStack.append(min(self.minStack[-1], val))                   # 2nd push minStack after comparison
         
     def pop(self) -> None:
-        if self.stack :
-            temp = self.stack.pop()
-            if temp == self.minStack[-1] or temp >= self.minStack[-1]:
-                self.minStack.pop()
+        if self.stack :                                                     # if stack is not empty          
+            temp = self.stack.pop()                                         # pop normal stack
+            if temp >= self.minStack[-1]:                                   # if temp is greater than or equal to min value
+                self.minStack.pop()                                         # 2nd pop minStack     
         
 
     def top(self) -> int:
-        if self.stack:
-            return self.stack[-1]
+        if self.stack:                                                       # if stack is not empty
+            return self.stack[-1]                                            # peek
         else:
             return None
 
-    def getMin(self) -> int:
-        if self.minStack:
-            return self.minStack[-1]
+    def getMin(self) -> int:                                                       
+        if self.minStack:   
+            return self.minStack[-1]                                          # Min is last element of minStack      
         else:
             return None
 
