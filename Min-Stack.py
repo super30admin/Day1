@@ -1,3 +1,6 @@
+#Time Complexity : O(1)
+#Space Complexity : O(n)
+
 class MinStack:
 
     def __init__(self):
@@ -7,34 +10,22 @@ class MinStack:
         
     def push(self, val: int) -> None:
         self.stack.append(val)
-        self.min_stack.append(val)
         self.head = self.head + 1
-        if self.head > 0:
-            for i in range(self.head-1,-1,-1):
-                if self.min_stack[i] < self.min_stack[i+1]:
-                    self.min_stack[i], self.min_stack[i+1] = self.min_stack[i+1], self.min_stack[i]
-                else:
-                    break     
-        
+        if not self.min_stack or self.min_stack[-1] >= self.stack[-1]:
+            self.min_stack.append(val)
+             
     def pop(self) -> None:
         if self.head > -1:
             temp = self.stack.pop()
             self.head = self.head - 1
-            self.min_stack.remove(temp)        
+        if temp == self.min_stack[-1]:
+            self.min_stack.pop()        
         
     def top(self) -> int:
         return self.stack[self.head]
 
     def getMin(self) -> int:
-        return self.min_stack[self.head]
+        return self.min_stack[-1]
         
         
 
-minStack = MinStack()  # Removed 'new'
-minStack.push(-2)
-minStack.push(0)
-minStack.push(-3)
-print(minStack.getMin())  # return -3
-minStack.pop()
-print(minStack.top())     # return 0
-print(minStack.getMin()) 
