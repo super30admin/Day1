@@ -1,5 +1,5 @@
 // Time Complexity : O(1)
-// Space Complexity : O(n) - number of elements inserted in the hashSet
+// Space Complexity : O(n) - number of elements inserted in the stack
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
