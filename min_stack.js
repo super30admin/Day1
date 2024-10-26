@@ -3,13 +3,12 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
-
 // Your code here along with comments explaining your approach
- 
+
 var MinStack = function () {
   this.stack = [];
   this.min = Infinity;
-  this.stack.insert(this.min);
+  this.stack.push(this.min);
 };
 
 /**
@@ -47,6 +46,16 @@ MinStack.prototype.top = function () {
 MinStack.prototype.getMin = function () {
   return this.min;
 };
+
+test("Scenario #1:", () => {
+  var obj = new MinStack();
+  obj.push(5);
+  obj.push(6);
+  obj.push(7);
+  obj.pop();
+  expect(obj.top()).toStrictEqual(6);
+  expect(obj.getMin()).toStrictEqual(5);
+});
 
 /**
  * Your MinStack object will be instantiated and called as such:

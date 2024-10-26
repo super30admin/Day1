@@ -68,8 +68,10 @@ MyHashSet.prototype.contains = function (key) {
   return this.storage[primaryIndex][secondaryIndex] || false;
 };
 
-var obj = new MyHashSet();
-obj.add(1001);
-obj.add(1006);
-console.log("Contains Key" + obj.contains(1));
-console.log("Contains Key" + obj.contains(3));
+test("Scenario #1:", () => {
+  var obj = new MyHashSet();
+  obj.add(1001);
+  obj.add(1006);
+  expect(obj.contains(1001)).toStrictEqual(true);
+  expect(obj.contains(1006)).toStrictEqual(true);
+});
