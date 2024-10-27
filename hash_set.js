@@ -74,4 +74,6 @@ test("Scenario #1:", () => {
   obj.add(1006);
   expect(obj.contains(1001)).toStrictEqual(true);
   expect(obj.contains(1006)).toStrictEqual(true);
+  obj.remove(1006)
+  expect(obj.contains(1006)).toStrictEqual(false);
 });
