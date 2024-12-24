@@ -4,6 +4,9 @@ class MinStack {
 
    Stack<Integer> stack;
    Stack<Integer> minStack;
+   // have a minStack to keep track of the minimum value at every step
+   // when we push a value, we push it to the minStack if it is smaller than the current minimum
+   // when we pop a value, we pop it from the minStack as well
     public MinStack() {
         stack = new Stack<>();
         minStack = new Stack<>();

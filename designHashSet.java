@@ -1,6 +1,8 @@
 class MyHashSet {
 
     //initial attempt
+    // just acquire a boolean array of size 1000001 and set the value to true if the key is present
+    //this is a simple approach but it is not efficient for large keys
     // boolean[] check;
     // public MyHashSet() {
     //     check =new boolean[1000001];
@@ -22,6 +24,11 @@ class MyHashSet {
 class MyHashSet2 {
 
     //second attempt after going thorough solutions online
+    // using a 2D boolean array to store the presence of the key
+    // the first key is the index of the bucket and the second key is the index of the bucket size
+    // this is a more efficient approach for large keys
+
+    // ran a test case to check how the secondary key works with numbers 8,18 and 28. They will have the same primary key
     boolean[][] set;
     int buckets;
     int bucketSize;
