@@ -19,7 +19,11 @@ class MyHashSet {
 
 	public void add(int key) {
 		int bucketIndex = this._hash(key);
-		this.bucketArray[bucketIndex].addFirst(Integer.valueOf(key));
+		LinkedList l = this.bucketArray[bucketIndex];
+		int keyValue = Integer.valueOf(key);
+		if (l.indexOf(keyValue) == -1) {
+			this.bucketArray[bucketIndex].addFirst(keyValue);
+		}
 	}
 
 	public void remove(int key) {
