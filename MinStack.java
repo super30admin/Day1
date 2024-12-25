@@ -1,23 +1,29 @@
-import java.util.Stack;
-
-class MinStack {
-    private Stack<Integer> stack = new Stack<>();
 /*
- * Input
-["MinStack","push","push","push","getMin","pop","top","getMin"]
-[[],[-2],[0],[-3],[],[],[],[]]
+	O(1) is the time complexity for all the methods(push,pop,top,getMin)
+*/
+class MinStack {
+    Stack<Integer> stack;
+    int min;
 
-Output
-[null,null,null,null,-3,null,0,-2]
- */
-    public MinStack() {}
+    public MinStack() {
+        stack = new Stack<>();
+        min = Integer.MAX_VALUE;
+    }
 
-    public void push(int x) {
-        stack.push(x);
+    public void push(int val) {
+        if (val <= min) {
+            stack.push(min);
+            min = val;
+        }
+            stack.push(val);
+
     }
 
     public void pop() {
-        stack.pop();
+        int popped = stack.pop();
+        if(popped == min){
+            min = stack.pop();
+        }
     }
 
     public int top() {
@@ -25,7 +31,15 @@ Output
     }
 
     public int getMin() {
-        //TODO
-    	return stack.peek();
+        return min;
     }
 }
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
