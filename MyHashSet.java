@@ -1,14 +1,11 @@
-/*
-	O(1) is the time complexity for all the methods(add,remove,contains)
-*/
 class MyHashSet {
     int buckets;
     int bucketItems;
     private boolean[][] storage;
 
     public MyHashSet() {
-        this.buckets = 1000;
-        this.bucketItems = 1000;
+        this.buckets = 10000;
+        this.bucketItems = 10000;
         storage = new boolean[this.buckets][this.bucketItems];
     }
 
