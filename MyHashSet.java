@@ -1,3 +1,6 @@
+/*
+	O(1) is the time complexity for all the methods(add,remove,contains)
+*/
 class MyHashSet {
     int buckets;
     int bucketItems;
