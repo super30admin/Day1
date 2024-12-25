@@ -1,3 +1,9 @@
+// Author: Subhed Chavan
+// Batch: December 24
+// Problem Statement: Min Stack
+// Approach: Min Stack using Single Stack
+// Time Complexity: O(1)
+
 class MinStack
 {
 

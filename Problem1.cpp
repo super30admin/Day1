@@ -1,3 +1,9 @@
+// Author: Subhed Chavan
+// Batch: December 24
+// Problem Statement: Design HashSet
+// Approach: Double Hashing with 2D Array
+// Time Complexity: O(1)
+
 class MyHashSet
 {
 private:
