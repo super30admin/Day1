@@ -59,7 +59,7 @@ class MinStack {
 
 //Time Complexity:0(1)
 //Space Complexity:Constant space to store the range of 2d arrays indexes and position in 2d arrays while addition, contains and removal.
-
+// double hashing with modulo and division is needed to avoid collision.
 class MyHashSet {
     int primaryIndexes=1000;
     int secondaryIndexes=1000;
