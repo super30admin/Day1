@@ -1,24 +1,46 @@
 class MyHashSet:
-
     def __init__(self):
-        # simulating hashset using a dictionary and initialising it
-        self.d = {}
-
+        self.buckets = 1000
+        self.bucketItems = 1000
+        self.storage = [None]*self.buckets
+    
+    def getBucket(self,key):
+        # tc: O(1)
+        return key % self.buckets
+    
+    def getBucketItem(self,key):
+        # tc: O(1)
+        return key // self.bucketItems
+        
     def add(self, key: int) -> None:
-        # assigns the value 1 for the element inserted.
-        # time complexity: O(1)
-        self.d[key] = 1
+        # tc: O(1)
+        bucket = self.getBucket(key)
+        bucketItem = self.getBucketItem(key)
+        if self.storage[bucket] is None:
+            if bucket == 0:
+                self.storage[bucket] = [False]*(self.bucketItems+1)
+            else:
+
+                self.storage[bucket] = [False]*self.bucketItems
+        self.storage[bucket][bucketItem] = True
+        
 
     def remove(self, key: int) -> None:
-        # assigns value 0 to key saying the value is deleted from dictionary
-        # time complexity: O(1)
-        self.d[key] = 0
+        # tc: O(1)
+        bucket = self.getBucket(key)
+        bucketItem = self.getBucketItem(key)
+        if self.storage[bucket] is not None:
+            self.storage[bucket][bucketItem] = False
+        
+        
 
     def contains(self, key: int) -> bool:
-        # checks if the key exists in dictionary by vefirying if its value is not equal to 0
-        # time complexity: O(1)
-        return self.d.get(key,0)!=0
-    
+        # tc: O(1)
+        bucket = self.getBucket(key)
+        bucketItem = self.getBucketItem(key)
+        if self.storage[bucket] is not None:
+            return self.storage[bucket][bucketItem]
+        return False
 
 
 
