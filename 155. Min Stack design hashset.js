@@ -4,8 +4,9 @@
 /*
 Any problem you faced while coding this :
 
-Designing stack using js 
-created multiple operations run in O(1)
+Designing stack using js - Designed 1 more stack called min stack and keep updating the minimum value 
+at top in that stack and returned the top most value in this way we get the min value in O(1).
+created multiple operations run in O(1) 
 
 */
 var MinStack = function() {
