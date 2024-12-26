@@ -1,50 +1,69 @@
 class MyHashMap {
     int buckets;
-    int bucketItems;
-    private int[][] storage;
+    Node[] storage;
 
     public MyHashMap() {
         this.buckets = 1000;
-        this.bucketItems = 1000;
-        storage = new int[this.buckets][this.bucketItems];
+        storage = new Node[this.buckets];
+    }
+
+    class Node {
+        int key, value;
+        Node next;
+
+        public Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    private Node find(Node dummy, int key) {
+        Node prev = dummy;
+        Node curr = dummy.next;
+        while (curr != null && curr.key != key) {
+            prev = curr;
+            curr = curr.next;
+        }
+        return prev;
     }
 
     public int getBucket(int key) {
         return key % this.buckets;
     }
 
-    public int getBucketItem(int key) {
-        return key / this.bucketItems;
-    }
-
     public void put(int key, int value) {
         int bucket = getBucket(key);
-        int bucketItem = getBucketItem(key);
-        System.out.println("bucketItem:"+bucket+",bucketItem:"+bucketItem);
         if (storage[bucket] == null) {
-            if (bucket == 0) {
-                storage[bucket] = new int[this.bucketItems + 1];
-            } else {
-                storage[bucket] = new int[this.bucketItems];
-            }
+            storage[bucket] = new Node(-1, -1);
         }
-        storage[bucket][bucketItem] = value;
+        Node prev = find(storage[bucket], key);
+        if (prev.next != null) {
+            prev.next.value = value;
+        } else {
+            prev.next = new Node(key, value);
+        }
     }
 
     public int get(int key) {
         int bucket = getBucket(key);
-        int bucketItem = getBucketItem(key);
         if (storage[bucket] != null) {
-            return storage[bucket][bucketItem];
+            Node prev = find(storage[bucket], key);
+            if (prev.next != null) {
+                return prev.next.value;
+            }
         }
         return -1;
     }
 
     public void remove(int key) {
         int bucket = getBucket(key);
-        int bucketItem = getBucketItem(key);
-        if (storage[bucket] != null) {
-            storage[bucket][bucketItem] = -1;
+        if (storage[bucket] == null) {
+            return;
         }
+        Node prev = find(storage[bucket], key);
+        if (prev.next != null) {
+            prev.next = prev.next.next;
+        }
+
     }
 }
