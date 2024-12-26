@@ -29,16 +29,22 @@ public:
 
     void add(int key)
     {
+        int bucketList = getBucket(key);
+        int bucketItem = getBucketItem(key);
         // validate if the bucket is required to be created
-        if (bucket[getBucket(key)].empty())
+        if (bucket[bucketList].empty())
         {
-            bucket[getBucket(key)].resize(size);
-            bucket[getBucket(key)][getBucketItem(key)] = true;
+            if (bucketList == 0)
+            {
+                bucket[bucketList].resize(size + 1, false);
+            }
+            else
+            {
+                bucket[bucketList].resize(size, false);
+            }
         }
-        else
-        {
-            bucket[getBucket(key)][getBucketItem(key)] = true;
-        }
+
+        bucket[getBucket(key)][getBucketItem(key)] = true;
     }
 
     void remove(int key)
