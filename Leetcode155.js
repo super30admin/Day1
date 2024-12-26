@@ -18,15 +18,11 @@ var MinStack = function() {
  * @param {number} x
  * @return {void}
  */
-MinStack.prototype.push = function(x) {
-  this.stack.push(x);
+MinStack.prototype.push = function(val) {
+  this.stack.push(val);
 
   var min = this.getMin();
-  if (min!== undefined) {
-    this.min.push(Math.min(x, min));
-  } else {
-    this.min.push(x);
-  }
+  if (min!== undefined) ?this.min.push(Math.min(min,val)):this.min.push(val);
 };
 
 /**
