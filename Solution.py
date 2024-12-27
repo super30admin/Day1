@@ -50,7 +50,7 @@ class Hashset:
 # While poping if the value is less than or equal to our current min we pop twice ie once
 # to remove the value and the second time to remove the previous min value stored and update the min value as well.
 
-class MinStack(object):
+class MinStack:
 
     def __init__(self):
         self.stack = []
