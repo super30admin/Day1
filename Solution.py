@@ -11,29 +11,30 @@
 # Use key / 1001 as the second hash funtion to get the sub bucket ie row
 
 class Hashset:
-  def __init__(self):
-		self.columns= [None] * 1000
-    
+    def __init__(self):
+        self.columns= [None] * 1000
+        
     def add(self, key):
-		  column_num = key % 1000
-		  if self.columns[column_num] == None:
-			  self.columns[column_num] = [False]*1001
-		  row_num = key / 1001
-		  self.columns[column_num][row_num] = True
-    
+        column_num = key % 1000
+        if self.columns[column_num] == None:
+            self.columns[column_num] = [False]*1001
+        row_num = key / 1001
+        self.columns[column_num][row_num] = True
+        
     def remove(self, key):
-		  column_num = key % 1000
-		  if self.columns[column_num] == None:
-			  return 
-		  row_num = key / 1001
-		  self.columns[column_num][row_num]  = False
+        column_num = key % 1000
+        if self.columns[column_num] == None:
+            return 
+        row_num = key / 1001
+        self.columns[column_num][row_num]  = False
     
     def contains(self, key):
-      column_num = key % 1000
-      if self.columns[column_num] == None:
-          return False
-      row_num = key / 1001
-      return self.columns[column_num][row_num]
+        column_num = key % 1000
+        if self.columns[column_num] == None:
+            return False
+        row_num = key / 1001
+        return self.columns[column_num][row_num]
+
 
 ######## Design a Min Stack Data Structure ###########
 
@@ -49,28 +50,28 @@ class Hashset:
 # While poping if the value is less than or equal to our current min we pop twice ie once
 # to remove the value and the second time to remove the previous min value stored and update the min value as well.
 
-class MinStack:
-		def __init__(self):
-			self.stack = []
-			self.currMin = float('inf')
+class MinStack(object):
+
+    def __init__(self):
+        self.stack = []
+        self.currMin = float('inf')
     
     def push(self, value):
-			if value <= self.currMin:
-				self.stack.append(self.currMin)
-				self.currMin = value
-			self.stack.append(value)
+        if value <= self.currMin:
+            self.stack.append(self.currMin)
+            self.currMin = value
+        self.stack.append(value)
     
     def pop(self):
-			if self.stack[-1]> self.currMin:
-				return self.stack.pop()
-			else:
-				value = self.stack.pop()
-				self.currMin = self.stack.pop()
-				return value
+        if self.stack[-1]> self.currMin:
+            return self.stack.pop()
+        else:
+            value = self.stack.pop()
+            self.currMin = self.stack.pop()
+            return value
     
     def getMin(self):
-			return self.currMin
+        return self.currMin
     
     def top(self):
-			return self.stack[-1]
-      
+        return self.stack[-1]
