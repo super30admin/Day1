@@ -6,15 +6,15 @@ class FindFirstLastPositionSortedArraySolution {
         if (n == 0 || nums == null || target < nums[low] || target > nums[high]) {
             return new int[] { -1, -1 };
         }
-        int first = bsF(nums, target);
+        int first = binarySearchFirst(nums, target);
         if (first == -1) {
             return new int[] { -1, -1 };
         }
-        int last = bsL(nums, target);
+        int last = binarySearchLast(nums, target);
         return new int[] { first, last };
     }
 
-    private int bsF(int[] nums, int target) {
+    private int binarySearchFirst(int[] nums, int target) {
         int low = 0;
         int high = nums.length - 1;
         while (low <= high) {
@@ -36,7 +36,7 @@ class FindFirstLastPositionSortedArraySolution {
         return -1;
     }
 
-    private int bsL(int[] nums, int target) {
+    private int binarySearchLast(int[] nums, int target) {
         int low = 0;
         int high = nums.length - 1;
         while (low <= high) {
