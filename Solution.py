@@ -18,21 +18,21 @@ class Hashset:
         column_num = key % 1000
         if self.columns[column_num] == None:
             self.columns[column_num] = [False]*1001
-        row_num = key / 1001
+        row_num = key // 1001
         self.columns[column_num][row_num] = True
         
     def remove(self, key):
         column_num = key % 1000
         if self.columns[column_num] == None:
             return 
-        row_num = key / 1001
+        row_num = key // 1001
         self.columns[column_num][row_num]  = False
     
     def contains(self, key):
         column_num = key % 1000
         if self.columns[column_num] == None:
             return False
-        row_num = key / 1001
+        row_num = key // 1001
         return self.columns[column_num][row_num]
 
 
