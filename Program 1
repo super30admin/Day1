@@ -1,0 +1,78 @@
+// space complexity: O(1)
+// time complexity: add- O(1)
+                    remove, contains - O(n)
+
+
+
+class MyHashSet {
+
+    int size = 1000;
+    Node[] node;
+
+    public MyHashSet() {
+        node= new Node[size];
+    }
+    
+    public void add(int key) {
+        if (contains(key)) return;
+        int hash = hash(key);
+        Node currNode = node[hash];
+        node[hash] = new Node(key);
+        node[hash].next = currNode;   
+    }
+    
+    public void remove(int key) {
+        int hash = hash(key);
+        Node currNode = node[hash];
+
+        if (currNode == null) {
+            return;
+        }
+
+        if (currNode.key == key) {
+            node[hash] = currNode.next;
+            return;
+        }
+        
+        while (currNode != null && currNode.next != null) {
+            if (currNode.next.key == key) {
+                currNode.next = currNode.next.next;
+                return;
+            }
+            currNode = currNode.next;
+        }
+    }
+    
+    public boolean contains(int key) {
+        int hash = hash(key);
+        Node currNode = node[hash];
+
+        while (currNode != null) {
+            if (currNode.key == key) {
+                return true;
+            }
+             currNode = currNode.next;
+        }
+        return false;  
+    }
+
+    public int hash(int key) {
+        return (key * 5) % size;
+    }
+
+ class Node {
+    int key;
+    Node next;
+    Node (int key) {
+        this.key = key;
+        this.next = null;
+    }
+}
+}
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet obj = new MyHashSet();
+ * obj.add(key);
+ * obj.remove(key);
+ * boolean param_3 = obj.contains(key);
+ */
