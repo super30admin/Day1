@@ -1,3 +1,10 @@
+# Time Complexity -
+#     add() - O(1)
+#     remove() - O(1)
+#     contains() - O(1)
+
+# Space Complexity - O(10^6)
+
 class MyHashSet:
 
     def __init__(self):
