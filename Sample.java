@@ -7,6 +7,7 @@
 // Your code here along with comments explaining your approach
 
 import java.util.Arrays;
+import java.util.Stack;
 
 class Sample {
     public static void main(String[] args) {
@@ -24,8 +25,6 @@ class Sample {
         myHasSet.contains(111);
         myHasSet.remove(111);
         myHasSet.remove(34001);
-
-        System.out.println(myHasSet);
     }
 
     private boolean[][] storage;
@@ -59,8 +58,6 @@ class Sample {
 
         int bucketNo = getBucketNo(key);
 
-        System.out.println("bucketNo == " + bucketNo);
-
         if (storage[bucketNo] == null) {
 
             if (bucketNo == 0) {
@@ -71,9 +68,6 @@ class Sample {
         }
 
         int bucketItemNo = getBucketItem(key);
-
-        System.out.println("bucketItemNo == " + bucketItemNo);
-
 
         storage[bucketNo][bucketItemNo] = true;
     }
