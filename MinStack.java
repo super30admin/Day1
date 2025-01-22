@@ -1,3 +1,8 @@
+//TC: Add, Remove, Contains : O(1)
+//SC: O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
 // * ORIGINAL APPROACH */
 
 // class Node{
