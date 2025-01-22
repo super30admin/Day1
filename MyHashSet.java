@@ -1,5 +1,7 @@
 /**
- Implemented a hash set using a 2D boolean array (arr) where each element represents whether a particular key is present or not
+ * Implemented a hash set using a 2D boolean array (arr) where each element represents whether a particular key is present or not.
+ * The Time Complexity for add, remove and contains is O(1)
+ * Space Complexity is O(n^2) for tha 2D array.
  */
 
 class MyHashSet {
@@ -8,9 +10,9 @@ class MyHashSet {
     int nestedArraySize;
 
     public MyHashSet() {
-        primaryArraySize = 1000;
-        nestedArraySize = 1000;
-        arr = new boolean[primaryArraySize][];
+        this.primaryArraySize = 1000;
+        this.nestedArraySize = 1000;
+        this.arr = new boolean[primaryArraySize][];
     }
 
     private int primaryIndex(int key) {
