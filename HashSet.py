@@ -1,5 +1,5 @@
 # Time Complexity : O(1) for add, remove, and contains operations on average
-# Space Complexity : O(n) where n is the number of keys in the hash set
+# Space Complexity : O(n) where n is the number of keys in the hash set. Specifically O(B + N) where B is the number of buckets and N is the number of keys in the hash set.
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No issues faced during implementation
 
