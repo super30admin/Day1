@@ -6,7 +6,7 @@
 
 // Your code here along with comments explaining your approach
 
-Class MinStack{
+Class MinStack1{
     Stack<Integer> stack;
     Stack<Integer> minStack;
     int min;
