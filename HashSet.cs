@@ -1,3 +1,5 @@
+#TC: O(1)
+
 public class MyHashSet {
 
     private bool[][] storage; 
