@@ -4,7 +4,7 @@
 // Any problem you faced while coding this : forgot to inclue edge case for 0 and later added it
 
 
-class Sample {
+class HashSet {
 
     private boolean[][] storage;
     private int primary;
