@@ -1,10 +1,11 @@
+# time compkexity = O(1)
+# space complexity = O(1)
 class MyHashSet(object):
 
     def __init__(self):
         
-        self.stack = []
-
-        
+        self.size = 10**6 + 1
+        self.array = [False] * self.size
 
     def add(self, key):
         """
@@ -12,9 +13,8 @@ class MyHashSet(object):
         :rtype: None
         """
         # for avoiding duplicates
-        if key not in self.stack:
-            self.stack.append(key)
-        
+        self.array[key] = True
+
 
     def remove(self, key):
         """
@@ -22,20 +22,15 @@ class MyHashSet(object):
         :rtype: None
         """
         #we can chack key existing before removing
-        if key in self.stack:
-            self.stack.remove(key)
-        return None
+        self.array[key] = False
             
-        
-        
-
     def contains(self, key):
         """
         :type key: int
         :rtype: bool
         """
         #remove the key at the end
-        return key in self.stack
+        return self.array[key]
 
 
 # Your MyHashSet object will be instantiated and called as such:
