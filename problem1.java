@@ -1,3 +1,16 @@
+// Time Complexity :
+    // add() -> O(1)
+    // remove() -> O(1)
+    // contains() -> O(1)
+
+// Space Complexity : O(N)
+// Did this code successfully run on Leetcode : YES
+// Any problem you faced while coding this : NO
+
+
+// Your code here along with comments explaining your approach
+// Linear chaining collision handling approach
+
 class Node {
     int val;
     Node next;
