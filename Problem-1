@@ -1,0 +1,64 @@
+// https://leetcode.com/problems/design-hashset/description/
+// Time Complexity : O(1)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+// Used double hashing method as taught in the class
+
+
+class MyHashSet {
+public:
+    vector<vector<bool>*> arr;
+    int buckets;
+    int bucketList;
+    int hash1(int key){
+        return key%buckets;
+    }
+    int hash2(int key){
+        return key/bucketList;
+    }
+    MyHashSet() {
+        buckets = 1000;
+        bucketList = 1000;
+        arr.resize(buckets,NULL);
+    }
+    
+    void add(int key) {
+        int buck = hash1(key);
+        if(arr[buck] == NULL){
+            if(buck == 0){
+                arr[buck] = new vector<bool>(bucketList+1, false);
+            }
+            else{
+                arr[buck] = new vector<bool>(bucketList, false);
+            }
+        }
+        int buckList = hash2(key);
+        (*arr[buck])[buckList] = true;
+    }
+    
+    void remove(int key) {
+        int buck = hash1(key);
+        if(arr[buck] == NULL) return;
+        int buckList = hash2(key);
+        (*arr[buck])[buckList] = false;
+    }
+    
+    bool contains(int key) {
+        int buck = hash1(key);
+        if(arr[buck] == NULL) return false;
+        int buckList = hash2(key);
+        return (*arr[buck])[buckList];
+    }
+};
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet* obj = new MyHashSet();
+ * obj->add(key);
+ * obj->remove(key);
+ * bool param_3 = obj->contains(key);
+ */

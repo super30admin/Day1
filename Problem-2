@@ -1,0 +1,63 @@
+//https://leetcode.com/problems/min-stack/
+// Time Complexity : O(1)
+// push(): O(1) 
+// pop(): O(1) 
+// top(): O(1) 
+// getMin(): O(1)
+// Space Complexity : O(n) where n is the number of elements in the stack
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+// Declare an extra stack to store min value so far.
+// Initialize the min stack with maximum value, as elements are pushed, check the min value so far
+// update it if the current element pushed is smaller than the min value or else continue.
+
+
+
+
+class MinStack {
+public:
+    stack<int> st;
+    int minVal = INT_MAX;
+    stack<int> minSt;
+
+    MinStack() {
+        minSt.push(minVal);
+    }
+    
+    void push(int val) {
+        if(minVal>=val){
+            minSt.push(val); //stores val only if it's smaller than the existing min value.
+            minVal = val;
+        }
+        st.push(val);
+    }
+    
+    void pop() {
+        int popped = st.top();
+        st.pop();
+        if(popped == minVal){
+            minSt.pop();
+            minVal = minSt.top();
+        }
+    }
+    
+    int top() {
+        return st.top();
+    }
+    
+    int getMin() {
+        return minVal;
+    }
+};
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack* obj = new MinStack();
+ * obj->push(val);
+ * obj->pop();
+ * int param_3 = obj->top();
+ * int param_4 = obj->getMin();
+ */
