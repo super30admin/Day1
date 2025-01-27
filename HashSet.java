@@ -1,3 +1,5 @@
+//time complexity : O(1)
+//space complexity : O(n)
 class MyHashSet {
     private boolean[][] storage;
     private int buckets;
