@@ -1,5 +1,7 @@
 # Time Complexity : O(1) for add, remove, contains
 # Space Complexity : O(10^6) for worst case
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : no
 
 class MyHashSet(object):
 
