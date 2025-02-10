@@ -1,0 +1,24 @@
+Implememnt Hashset
+
+T.C-O(1) - For all operations
+
+1. **Storage Initialization**:  
+   - We use an array (`storage`) with a fixed number of `buckets` (1000) to store values efficiently.
+   - Each bucket itself can store `bucketItems` (1000 elements), allowing us to manage a large number of values efficiently.
+
+2. **Hash Functions**:  
+   - `_hash1(value)`: Determines the main bucket index using modulo (`value % 1000`).
+   - `_hash2(value)`: Determines the index within the bucket using integer division (`Math.floor(value / 1000)`).
+
+3. **Adding a Value (`add`)**:  
+   - Computes the correct bucket and index within the bucket.
+   - If the bucket doesn’t exist, it initializes an array of size `bucketItems` (1000) with `false` values.
+   - Marks the corresponding index as `true` to indicate the value is stored.
+
+4. **Removing a Value (`remove`)**:  
+   - If the bucket exists, it marks the index as `false` (indicating the value is removed).
+
+5. **Checking Containment (`contains`)**:  
+   - Returns `true` if the bucket and index exist and the value is `true`, otherwise `false`.
+
+This ensures efficient operations with near **O(1) time complexity**. 🚀

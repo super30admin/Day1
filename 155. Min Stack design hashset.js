@@ -59,3 +59,43 @@ MinStack.prototype.getMin = function() {
  * var param_3 = obj.top()
  * var param_4 = obj.getMin()
  */
+
+class MinStack{
+    constructor(){
+        this.stack =[];//main stack to store the element
+        this.minStack=[];//stack to store minimun values
+    }
+    function push(val){
+        this.stack.push(val);//push the value onto main stack
+    }
+
+    if (this.mainStack.length===0||val <= this.minStack[this.minStack.length-1]){
+        this.minStack.push(val);
+    }else{
+        //otherwise push the current minimum again to maintain the min stack
+        this.minStack.push(this.minStack[this.minStack.length-1])
+    }
+
+    function pop(){
+        this.stack.pop();
+        this.minStack();
+    }
+    function top(){
+        return this.stack[this.stack.length-1]
+    }
+
+    function getMin(){
+        return this.minStack[this.minStack.length-1]
+    }
+}
+
+const minStack = new MinStack();
+minStack.push(5)
+minStack.push(3)
+console.log(minStack.getMin())
+minStack.push(7)
+console.log(minStack.getMin()); // Returns 3
+minStack.pop();
+console.log(minStack.getMin()); // Returns 3
+minStack.pop();
+console.log(minStack.getMin()); // Returns 5
