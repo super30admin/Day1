@@ -1,0 +1,27 @@
+### Implementing a Min Stack Using a Single Stack  
+
+We can implement a **Min Stack** using a single stack while maintaining an efficient way to retrieve the minimum element at any time.  
+
+#### **Approach**  
+1. **Push Operation**  
+   - When pushing a new element, check if it is smaller than the current minimum.  
+   - If it is, store the previous minimum along with the new element.  
+   - Update the `min` variable to reflect the new minimum.  
+
+2. **Pop Operation**  
+   - If the top element is the current minimum, pop twice:  
+     - First pop removes the current minimum.  
+     - Second pop restores the previous minimum.  
+
+3. **Top Operation**  
+   - Simply return the topmost element of the stack.  
+
+4. **GetMin Operation**  
+   - Return the `min` variable, which holds the current minimum value.  
+
+#### **Key Benefits**  
+- Uses only a **single stack** instead of two.  
+- Keeps track of the **minimum value efficiently** without additional space overhead.  
+- Each operation runs in **O(1) time complexity**.  
+
+
